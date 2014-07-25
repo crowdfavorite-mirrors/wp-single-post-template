@@ -99,11 +99,6 @@ class Single_Post_Template_Plugin {
 			foreach ( $post_types  as $post_type ) {
 			   add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), $post_type, 'normal', 'high' );
 			}
-
-			/*add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'media', 'normal', 'high' );
-			add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'press-release', 'normal', 'high' );
-			add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'publication', 'normal', 'high' );
-			add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'webinar', 'normal', 'high' );*/
 		}
 	}
 
