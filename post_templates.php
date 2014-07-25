@@ -83,9 +83,28 @@ class Single_Post_Template_Plugin {
 
 	function add_metabox() {
 
-		if ( $this->get_post_templates() )
+		if ( $this->get_post_templates() ){
 			add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'post', 'normal', 'high' );
+			
+			$args = array(
+			   'public'   => true,
+			   '_builtin' => false
+			);
 
+			$output = 'names'; // names or objects, note names is the default
+			$operator = 'and'; // 'and' or 'or'
+
+			$post_types = get_post_types( $args, $output, $operator ); 
+
+			foreach ( $post_types  as $post_type ) {
+			   add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), $post_type, 'normal', 'high' );
+			}
+
+			/*add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'media', 'normal', 'high' );
+			add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'press-release', 'normal', 'high' );
+			add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'publication', 'normal', 'high' );
+			add_meta_box( 'pt_post_templates', __( 'Single Post Template', 'genesis' ), array( $this, 'metabox' ), 'webinar', 'normal', 'high' );*/
+		}
 	}
 
 	function metabox( $post ) {
